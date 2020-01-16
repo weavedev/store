@@ -9,7 +9,7 @@ export function watchWindowStoreSagas(run: SagaMiddleware['run']): void {
         {},
         {
             deleteProperty(target: StoreSagasMap, k: keyof StoreSagasMap): boolean {
-                if (!k || !target[k]) {
+                if (k === undefined || !target[k]) {
                     return true;
                 }
 
@@ -25,7 +25,7 @@ export function watchWindowStoreSagas(run: SagaMiddleware['run']): void {
                 return true;
             },
             set<K extends keyof StoreSagasMap>(target: StoreSagasMap, k: K, value: Saga): boolean {
-                if (!k) {
+                if (k === undefined || k === '') {
                     return true;
                 }
 

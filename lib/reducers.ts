@@ -11,7 +11,7 @@ export function watchWindowStoreReducers(): StoreReducer {
     // Wrap window reducers object and copy existing reducers
     window.storeReducers = new Proxy(window.storeReducers, {
         deleteProperty(target: StoreReducersMap, k: keyof StoreReducersMap): boolean {
-            if (!k || !target[k]) {
+            if (k === undefined || !target[k]) {
                 return true;
             }
 
@@ -25,7 +25,7 @@ export function watchWindowStoreReducers(): StoreReducer {
             return true;
         },
         set<K extends keyof StoreReducersMap>(target: StoreReducersMap, k: K, value: StoreReducersMap[K]): boolean {
-            if (!k) {
+            if (k === undefined || k === '') {
                 return true;
             }
 
@@ -46,12 +46,12 @@ export function watchWindowStoreReducers(): StoreReducer {
     return (state: StoreState | undefined, action: StoreActions): StoreState => {
         const newState: StoreState = <StoreState>{ ...state }; // tslint:disable-line:no-object-literal-type-assertion
         if (deletedReducers.length > 0) {
-            deletedReducers = [];
             deletedReducers.forEach((k: StoreKey): void => {
                 delete newState[k]; // tslint:disable-line:no-dynamic-delete
             });
+            deletedReducers = [];
         }
 
-        return storeReducer(state, action);
+        return storeReducer(newState, action);
     };
 }
