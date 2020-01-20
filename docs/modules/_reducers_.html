@@ -40,6 +40,8 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -68,6 +70,13 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="_reducers_.html#storekey" class="tsd-kind-icon">Store<wbr>Key</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="_reducers_.html#storereducer" class="tsd-kind-icon">Store<wbr>Reducer</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
@@ -77,22 +86,45 @@
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="storekey" class="tsd-anchor"></a>
+					<h3>Store<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">Store<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/gerarts/store/blob/0084a14/lib/reducers.ts#L4">reducers.ts:4</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="storereducer" class="tsd-anchor"></a>
+					<h3>Store<wbr>Reducer</h3>
+					<div class="tsd-signature tsd-kind-icon">Store<wbr>Reducer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Reducer</span><span class="tsd-signature-symbol">&lt;</span><a href="_init_.__global.html#storestate" class="tsd-signature-type">StoreState</a><span class="tsd-signature-symbol">, </span><a href="_init_.__global.html#storeactions" class="tsd-signature-type">StoreActions</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/gerarts/store/blob/0084a14/lib/reducers.ts#L3">reducers.ts:3</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="watchwindowstorereducers" class="tsd-anchor"></a>
 					<h3>watch<wbr>Window<wbr>Store<wbr>Reducers</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">watch<wbr>Window<wbr>Store<wbr>Reducers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StoreReducer</span></li>
+						<li class="tsd-signature tsd-kind-icon">watch<wbr>Window<wbr>Store<wbr>Reducers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_reducers_.html#storereducer" class="tsd-signature-type">StoreReducer</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gerarts/store/blob/41f649c/lib/reducers.ts#L6">reducers.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/gerarts/store/blob/0084a14/lib/reducers.ts#L6">reducers.ts:6</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">StoreReducer</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_reducers_.html#storereducer" class="tsd-signature-type">StoreReducer</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -126,6 +158,12 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_reducers_.html#storekey" class="tsd-kind-icon">Store<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_reducers_.html#storereducer" class="tsd-kind-icon">Store<wbr>Reducer</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_reducers_.html#watchwindowstorereducers" class="tsd-kind-icon">watch<wbr>Window<wbr>Store<wbr>Reducers</a>
 					</li>
