@@ -188,7 +188,7 @@ declare global {
 The `StoreState` type describes the return type of `window.store.getState()`. Useful when using stored values.
 
 ```ts
-const state: StoreSate = window.store.getState();
+const state: StoreState = window.store.getState();
 ```
 
 ### Logging
