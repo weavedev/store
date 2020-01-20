@@ -1,0 +1,5 @@
+{
+  "name": "@weavedev/store/init",
+  "main": "../dist/init.js",
+  "types": "../dist/init.d.ts"
+}
