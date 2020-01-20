@@ -12,7 +12,8 @@ export function loadDefaultSaga(): void {
 
 declare global {
     interface StoreActionsMap {
-        $$init: Action<'$$SAGA_INIT'> | Action<'$$SAGA_READY'>;
+        $$SAGA_INIT: Action<'$$SAGA_INIT'>;
+        $$SAGA_READY: Action<'$$SAGA_READY'>;
     }
 
     interface StoreSagasMap {

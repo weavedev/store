@@ -65,7 +65,175 @@
 				<a href="#store" id="store" style="color: inherit; text-decoration: none;">
 					<h1>store</h1>
 				</a>
-				<p>Opinionated drop-in redux store with redux-saga</p>
+				<p><a href="https://travis-ci.org/weavedev/store"><img src="https://img.shields.io/travis/weavedev/store.svg" alt="Build Status - Travis CI"></a>
+					<a href="https://codeclimate.com/github/weavedev/store/test_coverage"><img src="https://img.shields.io/codeclimate/coverage/weavedev/store.svg" alt="Test Coverage - Code Climate"></a>
+					<a href="https://github.com/weavedev/store/blob/master/LICENSE"><img src="https://img.shields.io/github/license/weavedev/store.svg" alt="GPL-3.0"></a>
+				<a href="https://www.npmjs.com/package/@weavedev/store"><img src="https://img.shields.io/npm/v/@weavedev/store.svg" alt="NPM"></a></p>
+				<p>Opinionated drop-in <a href="http://redux.js.org/">Redux</a> store with <a href="https://redux-saga.js.org">Redux-Saga</a></p>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<pre><code><span class="hljs-built_in">npm</span> i @weavedev/store</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
+					<h3>Initialization</h3>
+				</a>
+				<a href="#basic-initialization" id="basic-initialization" style="color: inherit; text-decoration: none;">
+					<h4>Basic initialization</h4>
+				</a>
+				<p>The recommended way to create the <code>store</code> is with the <code>init()</code> function.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { init } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store/init'</span>;
+
+init();</code></pre>
+				<a href="#custom-initialization-with-middlewares" id="custom-initialization-with-middlewares" style="color: inherit; text-decoration: none;">
+					<h4>Custom initialization with middlewares</h4>
+				</a>
+				<p>If you want to use your own middlewares you can pass them as arguments.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { init } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store/init'</span>;
+<span class="hljs-keyword">import</span> { logger, router, uploader } <span class="hljs-keyword">from</span> <span class="hljs-string">'./middlewares'</span>;
+
+init(logger, router, uploader);</code></pre>
+				<a href="#automatic-initialization" id="automatic-initialization" style="color: inherit; text-decoration: none;">
+					<h4>Automatic initialization</h4>
+				</a>
+				<p>When the <code>store</code> object is imported and <code>window.store</code> has not already been initialized this package will initialize it for you.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { store } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store'</span>;</code></pre>
+				<a href="#note" id="note" style="color: inherit; text-decoration: none;">
+					<h6>NOTE</h6>
+				</a>
+				<p>The purpose of automatic initialization and the importable <code>store</code> object are to provide an easy way to migrate an existing project. Manually initializing the store is recommended.</p>
+				<a href="#reducers" id="reducers" style="color: inherit; text-decoration: none;">
+					<h3>Reducers</h3>
+				</a>
+				<a href="#adding-reducers" id="adding-reducers" style="color: inherit; text-decoration: none;">
+					<h4>Adding reducers</h4>
+				</a>
+				<p>Adding reducers to the <code>window.storeReducers</code> object registers them on the <code>store</code> and allows you to dispatch actions on them.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Action, Reducer } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+
+<span class="hljs-comment">// Clear message action</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CLEAR_MESSAGE = <span class="hljs-string">'CLEAR_MESSAGE'</span>;
+<span class="hljs-keyword">type</span> ClearMessage = Action&lt;<span class="hljs-keyword">typeof</span> CLEAR_MESSAGE&gt;;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> clearMessage = (): <span class="hljs-function"><span class="hljs-params">ClearMessage</span> =&gt;</span> ({
+    <span class="hljs-keyword">type</span>: CLEAR_MESSAGE,
+});
+
+<span class="hljs-comment">// Set message action</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> SET_MESSAGE = <span class="hljs-string">'SET_MESSAGE'</span>;
+<span class="hljs-keyword">interface</span> SetMessage <span class="hljs-keyword">extends</span> Action&lt;typeof SET_MESSAGE&gt; {
+    message: <span class="hljs-built_in">string</span>;
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> setMessage = (message: <span class="hljs-built_in">string</span>): <span class="hljs-function"><span class="hljs-params">SetMessage</span> =&gt;</span> ({
+    <span class="hljs-keyword">type</span>: SET_MESSAGE,
+    message,
+});
+
+<span class="hljs-comment">// Message reducer</span>
+<span class="hljs-built_in">window</span>.storeReducers.myMessageReducer = (state: <span class="hljs-built_in">string</span> = <span class="hljs-string">'default value'</span>, action: StoreActions): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> {
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'CLEAR_MESSAGE'</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'SET_MESSAGE'</span>:
+            <span class="hljs-keyword">return</span> action.message;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">return</span> state;
+    }
+};
+
+<span class="hljs-keyword">declare</span> global {
+    <span class="hljs-keyword">interface</span> StoreReducersMap {
+        myMessageReducer: Reducer&lt;<span class="hljs-built_in">string</span>, StoreActions&gt;;
+    }
+
+    <span class="hljs-keyword">interface</span> StoreActionsMap {
+        myMessageReducer: SetMessage | ClearMessage;
+    }
+}</code></pre>
+				<a href="#removing-reducers" id="removing-reducers" style="color: inherit; text-decoration: none;">
+					<h4>Removing reducers</h4>
+				</a>
+				<p>After removing a reducer from <code>window.storeReducers</code> it will no longer listen to dispatched actions. After a reducer is removed from <code>window.storeReducers</code> its state will be removed when the next action is processed.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.storeReducers.myMessageReducer;</code></pre>
+				<a href="#sagas" id="sagas" style="color: inherit; text-decoration: none;">
+					<h3>Sagas</h3>
+				</a>
+				<a href="#adding-sagas" id="adding-sagas" style="color: inherit; text-decoration: none;">
+					<h4>Adding sagas</h4>
+				</a>
+				<p>Adding sagas to the <code>window.storeSagas</code> object registers them on the <code>store</code> and runs them to start listening to dispatched actions.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { call, takeLatest } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-saga/effects'</span>;
+<span class="hljs-keyword">import</span> { SetMessage } <span class="hljs-keyword">from</span> <span class="hljs-string">'./myMessageReducer'</span>;
+
+<span class="hljs-comment">// Message saga</span>
+<span class="hljs-built_in">window</span>.storeSagas.myMessageSaga = <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>): <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">any</span>&gt; </span>{
+    <span class="hljs-keyword">yield</span> takeLatest(<span class="hljs-string">'SET_MESSAGE'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params">action: SetMessage</span>): <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">any</span>&gt; </span>{
+        <span class="hljs-keyword">yield</span> call(<span class="hljs-built_in">console</span>.log, action.message);
+    });
+};</code></pre>
+				<a href="#removing-sagas" id="removing-sagas" style="color: inherit; text-decoration: none;">
+					<h4>Removing sagas</h4>
+				</a>
+				<p>After removing a saga from <code>window.storeSagas</code> it will no longer listen to dispatched actions and if the saga is running it will be cancelled.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.storeSagas.myMessageSaga;</code></pre>
+				<a href="#global-types" id="global-types" style="color: inherit; text-decoration: none;">
+					<h3>Global types</h3>
+				</a>
+				<p>This package provides the following global types</p>
+				<a href="#codestoreactionscode" id="codestoreactionscode" style="color: inherit; text-decoration: none;">
+					<h4><code>StoreActions</code></h4>
+				</a>
+				<p>Any actions known to the store. Useful when creating reducers.</p>
+				<pre><code class="language-ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myReducer</span>(<span class="hljs-params">state: <span class="hljs-built_in">string</span>, action: StoreActions</span>): <span class="hljs-title">string</span> </span>{
+    <span class="hljs-comment">// ...</span>
+}</code></pre>
+				<a href="#codestoreactionsmapcode" id="codestoreactionsmapcode" style="color: inherit; text-decoration: none;">
+					<h4><code>StoreActionsMap</code></h4>
+				</a>
+				<p>Any actions you want to use with the store you can add to the <code>StoreActionsMap</code>. These actions will be available on the global <code>StoreActions</code> type.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">declare</span> global {
+    <span class="hljs-keyword">interface</span> StoreActionsMap {
+        myReducer: Action&lt;<span class="hljs-string">'MY_ACTION'</span>&gt;;
+    }
+}</code></pre>
+				<a href="#codestorereducersmapcode" id="codestorereducersmapcode" style="color: inherit; text-decoration: none;">
+					<h4><code>StoreReducersMap</code></h4>
+				</a>
+				<p>Any reducers you want to use with the store you can add to the <code>StoreReducersMap</code>. This wil also bind the types to <code>StoreState</code>.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">declare</span> global {
+    <span class="hljs-keyword">interface</span> StoreReducersMap {
+        myReducer: Reducer&lt;<span class="hljs-built_in">string</span>, StoreActions&gt;;
+    }
+}</code></pre>
+				<a href="#codestoresagasmapcode" id="codestoresagasmapcode" style="color: inherit; text-decoration: none;">
+					<h4><code>StoreSagasMap</code></h4>
+				</a>
+				<p>It exists. You will probably not need it. But just in case you are looking for it, here it is.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">declare</span> global {
+    <span class="hljs-keyword">interface</span> StoreSagasMap {
+        mySaga: Saga;
+    }
+}</code></pre>
+				<a href="#codestorestatecode" id="codestorestatecode" style="color: inherit; text-decoration: none;">
+					<h4><code>StoreState</code></h4>
+				</a>
+				<p>The <code>StoreState</code> type describes the return type of <code>window.store.getState()</code>. Useful when using stored values.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">const</span> state: StoreSate = <span class="hljs-built_in">window</span>.store.getState();</code></pre>
+				<a href="#logging" id="logging" style="color: inherit; text-decoration: none;">
+					<h3>Logging</h3>
+				</a>
+				<p>Setting <code>window.DEV_MODE</code> to <code>true</code> before initializing will enable logging in the console and with the <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Chrome Redux DevTools</a>.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { init } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store/init'</span>;
+
+<span class="hljs-built_in">window</span>.DEV_MODE = <span class="hljs-literal">true</span>;
+
+init();</code></pre>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p><a href="https://github.com/weavedev/store/blob/master/LICENSE">GPL-3.0</a></p>
+				<p>Made by <a href="https://github.com/gerarts">Paul Gerarts</a> and <a href="https://weave.nl">Weave</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -73,9 +241,6 @@
 				<ul>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_custom_.html">"custom"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_defaultreducer_.html">"default<wbr>Reducer"</a>
