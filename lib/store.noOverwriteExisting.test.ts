@@ -3,7 +3,7 @@ init();
 
 const existing: any = window.store;
 
-import { store } from './';
+import { store } from './store';
 
 test('Store is not created by main module if store already exists', () => {
     // Store should exist

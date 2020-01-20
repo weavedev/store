@@ -13,6 +13,12 @@ Opinionated drop-in [Redux](http://redux.js.org/) store with [Redux-Saga](https:
 npm i @weavedev/store
 ```
 
+## API documentation
+
+We generate API documentation with [TypeDoc](https://typedoc.org).
+
+[![API Documentation](https://img.shields.io/badge/API-Documentation-blue?style=for-the-badge&logo=appveyor)](https://weavedev.github.io/store/)
+
 ## Usage
 
 ### Initialization

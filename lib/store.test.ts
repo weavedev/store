@@ -3,7 +3,7 @@ console.log = (...m: any[]): void => {
     logs.push(m);
 };
 
-import { store } from './';
+import { store } from './store';
 
 test('Store is automatically created on window when imported from the main module', () => {
     // Store should be created automatically

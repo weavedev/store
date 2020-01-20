@@ -8,7 +8,7 @@ const mock: ((t: string) => ((...m: any[]) => void)) = (t: string): ((...m: any[
 console.group = mock('group');
 console.log = mock('log');
 
-import { store } from './';
+import { store } from './store';
 
 test('Store should log with DEV_MODE enabled', () => {
     // Store should already be initialized
