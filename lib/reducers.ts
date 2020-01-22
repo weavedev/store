@@ -22,6 +22,10 @@ export function watchWindowStoreReducers(): StoreReducer {
 
             storeReducer = combineReducers(window.storeReducers);
 
+            if (window.store !== undefined) {
+                window.store.dispatch({ type: '$$REMOVE_REDUCER', reducer: `${String(k)}` });
+            }
+
             return true;
         },
         set<K extends keyof StoreReducersMap>(target: StoreReducersMap, k: K, value: StoreReducersMap[K]): boolean {
@@ -37,6 +41,10 @@ export function watchWindowStoreReducers(): StoreReducer {
             target[k] = value;
 
             storeReducer = combineReducers(window.storeReducers);
+
+            if (window.store !== undefined) {
+                window.store.dispatch({ type: '$$SET_REDUCER', reducer: `${String(k)}` });
+            }
 
             return true;
         },
