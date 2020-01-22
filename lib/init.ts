@@ -1,14 +1,17 @@
 import {
+    Action,
     applyMiddleware,
     compose as defaultCompose,
     createStore,
     Middleware,
+    Reducer,
     ReducersMapObject,
     StateFromReducersMapObject,
     Store,
 } from 'redux';
 import reduxLogger from 'redux-logger';
 import reduxSaga, { Saga, SagaMiddleware } from 'redux-saga';
+import { ForkEffect } from 'redux-saga/effects';
 import { loadDefaultReducer } from './defaultReducer';
 import { loadDefaultSaga } from './defaultSaga';
 import { watchWindowStoreReducers } from './reducers';
@@ -19,6 +22,10 @@ export type SagasMapObject = {
 };
 
 export type StoreCreator = (...m: Middleware[]) => void;
+
+interface ChangedReducerAction<T> extends Action<T> {
+    reducer: string;
+}
 
 // Prepare store
 export const init: StoreCreator = (...middlewares: Middleware[]): void => {
@@ -68,9 +75,21 @@ declare global {
     // Global interfaces for placing actions, reducers and sagas
 
     // tslint:disable:no-empty-interface
-    interface StoreActionsMap {}
-    interface StoreReducersMap extends ReducersMapObject {}
-    interface StoreSagasMap extends SagasMapObject {}
+    interface StoreActionsMap {
+        // Reducer helper actions
+        $$SET_REDUCER: ChangedReducerAction<'$$SET_REDUCER'>;
+        $$REMOVE_REDUCER: ChangedReducerAction<'$$REMOVE_REDUCER'>;
+
+        // Saga init actions
+        $$SAGA_INIT: Action<'$$SAGA_INIT'>;
+        $$SAGA_READY: Action<'$$SAGA_READY'>;
+    }
+    interface StoreReducersMap extends ReducersMapObject {
+        $$ready: Reducer<boolean>;
+    }
+    interface StoreSagasMap extends SagasMapObject {
+        $$init(): IterableIterator<ForkEffect>;
+    }
     // tslint:enable:no-empty-interface
 
     // All actions used by store

@@ -1,4 +1,3 @@
-import { Action } from 'redux';
 import { ForkEffect, put, PutEffect, takeLatest } from 'redux-saga/effects';
 
 export function loadDefaultSaga(): void {
@@ -8,15 +7,4 @@ export function loadDefaultSaga(): void {
             yield put({ type: '$$SAGA_READY' });
         });
     };
-}
-
-declare global {
-    interface StoreActionsMap {
-        $$SAGA_INIT: Action<'$$SAGA_INIT'>;
-        $$SAGA_READY: Action<'$$SAGA_READY'>;
-    }
-
-    interface StoreSagasMap {
-        $$init(): IterableIterator<ForkEffect>;
-    }
 }

@@ -13,11 +13,6 @@ test('Reducers can be added to store', () => {
 
     // Make sure reducer exists
     expect(window.storeReducers.testReducer1).toBeDefined();
-    // Make sure state does not yet exists
-    expect(window.store.getState().testReducer1).toBeUndefined();
-
-    // Trigger redux
-    window.store.dispatch({ type: '$$SAGA_READY' });
     // Make sure state exists
     expect(typeof window.store.getState().testReducer1).toEqual('string');
 });
@@ -27,19 +22,16 @@ test('Reducers can be removed from store', () => {
     window.storeReducers.testReducer2 = (s: string = 'default string', a: Action): string => `"${s}", "${a}"`;
     // Make sure reducer exists
     expect(window.storeReducers.testReducer2).toBeDefined();
+    // Make sure state exists
+    expect(typeof window.store.getState().testReducer2).toEqual('string');
 
     // Trigger redux
     window.store.dispatch({ type: '$$SAGA_READY' });
-    // Make sure state exists
-    expect(typeof window.store.getState().testReducer2).toEqual('string');
 
     // Delete reducer from store
     delete window.storeReducers.testReducer2;
     // Make sure reducer no longer exists
     expect(window.storeReducers.testReducer2).toBeUndefined();
-
-    // Trigger redux
-    window.store.dispatch({ type: '$$SAGA_READY' });
     // Make sure state is removed
     expect(window.store.getState().testReducer2).toBeUndefined();
 });
@@ -49,9 +41,6 @@ test('Reducers can be redefined on store and should reset state', () => {
     window.storeReducers.testReducer3 = (s: number = 1): number => s * 2;
     // Make sure reducer exists
     expect(window.storeReducers.testReducer3).toBeDefined();
-
-    // Trigger redux
-    window.store.dispatch({ type: '$$SAGA_READY' });
     // Make sure state exists
     expect(window.store.getState().testReducer3).toEqual(2);
 
@@ -65,8 +54,6 @@ test('Reducers can be redefined on store and should reset state', () => {
     // Make sure reducer exists
     expect(window.storeReducers.testReducer3).toBeDefined();
 
-    // Trigger redux
-    window.store.dispatch({ type: '$$SAGA_READY' });
     // Make sure state was reset
     expect(window.store.getState().testReducer3).toEqual(3);
 
@@ -86,9 +73,6 @@ test('Reducers can be removed from store before being triggered', () => {
     delete window.storeReducers.testReducer4;
     // Make sure reducer no longer exists
     expect(window.storeReducers.testReducer4).toBeUndefined();
-
-    // Trigger redux
-    window.store.dispatch({ type: '$$SAGA_READY' });
     // Make sure state is removed
     expect(window.store.getState().testReducer4).toBeUndefined();
 });

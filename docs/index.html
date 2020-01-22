@@ -161,7 +161,7 @@ init(logger, router, uploader);</code></pre>
 				<a href="#removing-reducers" id="removing-reducers" style="color: inherit; text-decoration: none;">
 					<h4>Removing reducers</h4>
 				</a>
-				<p>After removing a reducer from <code>window.storeReducers</code> it will no longer listen to dispatched actions. After a reducer is removed from <code>window.storeReducers</code> its state will be removed when the next action is processed.</p>
+				<p>After removing a reducer from <code>window.storeReducers</code> it will no longer listen to dispatched actions. After a reducer is removed from <code>window.storeReducers</code> its state will be removed.</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.storeReducers.myMessageReducer;</code></pre>
 				<a href="#sagas" id="sagas" style="color: inherit; text-decoration: none;">
 					<h3>Sagas</h3>

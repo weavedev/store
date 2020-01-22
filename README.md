@@ -107,7 +107,7 @@ declare global {
 
 #### Removing reducers
 
-After removing a reducer from `window.storeReducers` it will no longer listen to dispatched actions. After a reducer is removed from `window.storeReducers` its state will be removed when the next action is processed.
+After removing a reducer from `window.storeReducers` it will no longer listen to dispatched actions. After a reducer is removed from `window.storeReducers` its state will be removed.
 
 ```ts
 delete window.storeReducers.myMessageReducer;
