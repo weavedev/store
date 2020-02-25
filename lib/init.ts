@@ -46,9 +46,9 @@ export const init: StoreCreator = (...middlewares: Middleware[]): void => {
         watchWindowStoreReducers(),
         compose(
             applyMiddleware(
+                ...middlewares,
                 sagaMiddleware,
                 ...(window.DEV_MODE ? [reduxLogger] : []),
-                ...middlewares,
             ),
         ),
     );
