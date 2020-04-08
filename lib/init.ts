@@ -48,7 +48,7 @@ export const init: StoreCreator = (...middlewares: Middleware[]): void => {
             applyMiddleware(
                 ...middlewares,
                 sagaMiddleware,
-                ...(window.DEV_MODE ? [reduxLogger] : []),
+                ...(window.DEV_MODE && !window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? [reduxLogger] : []),
             ),
         ),
     );
