@@ -1,6 +1,7 @@
+import { envGlobal } from './envGlobal';
 import { init } from './init';
 
-test('Private window.store should be set after we init', () => {
+test('Private envGlobal.store should be set after we init', () => {
     init();
-    expect(window.store).toBeDefined();
+    expect(envGlobal.store).toBeDefined();
 });

@@ -1,10 +1,11 @@
 import { Saga, SagaMiddleware, Task } from 'redux-saga';
+import { envGlobal } from './envGlobal';
 
 export function watchWindowStoreSagas(run: SagaMiddleware['run']): void {
     // Map to store running sagas
     const storeSagas: Map<keyof StoreSagasMap, Task> = new Map();
     // Wrap window sagas object and copy existing sagas
-    window.storeSagas = new Proxy(
+    envGlobal.storeSagas = <StoreSagasMap>new Proxy(
         // @ts-ignore
         {},
         {
