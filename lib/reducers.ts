@@ -1,4 +1,5 @@
 import { combineReducers, Reducer } from 'redux';
+import { envGlobal } from './envGlobal';
 
 type StoreReducer = Reducer<StoreState, StoreActions>;
 type StoreKey = number | string;
@@ -7,9 +8,9 @@ export function watchWindowStoreReducers(): StoreReducer {
     // Place to keep removed reducer keys untill we are able to clean up when redux recalculates its store state
     let deletedReducers: StoreKey[] = [];
     // Constructed reducer
-    let storeReducer: StoreReducer = combineReducers(window.storeReducers);
+    let storeReducer: StoreReducer = combineReducers(envGlobal.storeReducers);
     // Wrap window reducers object and copy existing reducers
-    window.storeReducers = new Proxy(window.storeReducers, {
+    envGlobal.storeReducers = new Proxy(envGlobal.storeReducers, {
         deleteProperty(target: StoreReducersMap, k: keyof StoreReducersMap): boolean {
             if (k === undefined || !target[k]) {
                 return true;
@@ -20,10 +21,10 @@ export function watchWindowStoreReducers(): StoreReducer {
             // Clearing the state for the deleted reducer.
             deletedReducers.push(k);
 
-            storeReducer = combineReducers(window.storeReducers);
+            storeReducer = combineReducers(envGlobal.storeReducers);
 
-            if (window.store !== undefined) {
-                window.store.dispatch({ type: '$$REMOVE_REDUCER', reducer: `${String(k)}` });
+            if (envGlobal.store !== undefined) {
+                envGlobal.store.dispatch({ type: '$$REMOVE_REDUCER', reducer: `${String(k)}` });
             }
 
             return true;
@@ -40,10 +41,10 @@ export function watchWindowStoreReducers(): StoreReducer {
 
             target[k] = value;
 
-            storeReducer = combineReducers(window.storeReducers);
+            storeReducer = combineReducers(envGlobal.storeReducers);
 
-            if (window.store !== undefined) {
-                window.store.dispatch({ type: '$$SET_REDUCER', reducer: `${String(k)}` });
+            if (envGlobal.store !== undefined) {
+                envGlobal.store.dispatch({ type: '$$SET_REDUCER', reducer: `${String(k)}` });
             }
 
             return true;

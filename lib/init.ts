@@ -14,6 +14,7 @@ import reduxSaga, { Saga, SagaMiddleware } from 'redux-saga';
 import { ForkEffect } from 'redux-saga/effects';
 import { loadDefaultReducer } from './defaultReducer';
 import { loadDefaultSaga } from './defaultSaga';
+import { envGlobal } from './envGlobal';
 import { watchWindowStoreReducers } from './reducers';
 import { watchWindowStoreSagas } from './sagas';
 
@@ -30,45 +31,45 @@ interface ChangedReducerAction<T> extends Action<T> {
 // Prepare store
 export const init: StoreCreator = (...middlewares: Middleware[]): void => {
     // Add logger in compose when in dev-mode and extension is loaded and load middlewares
-    const compose: <C>(a: C) => C = window.DEV_MODE ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || defaultCompose : defaultCompose;
+    const compose: <C>(a: C) => C = envGlobal.DEV_MODE ? envGlobal.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || defaultCompose : defaultCompose;
     const sagaMiddleware: SagaMiddleware = reduxSaga();
 
     // Prepare reducers and sagas objects
-    window.storeReducers = window.storeReducers || {};
-    window.storeSagas = window.storeSagas || {};
+    envGlobal.storeReducers = envGlobal.storeReducers || {};
+    envGlobal.storeSagas = envGlobal.storeSagas || {};
 
     // Load default reducer and saga
     loadDefaultReducer();
     loadDefaultSaga();
 
-    // Watch window.storeReducers for changes and create store
+    // Watch envGlobal.storeReducers for changes and create store
     const s: Store<StoreState, StoreActions> = createStore(
         watchWindowStoreReducers(),
         compose(
             applyMiddleware(
                 ...middlewares,
                 sagaMiddleware,
-                ...(window.DEV_MODE && !window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? [reduxLogger] : []),
+                ...(envGlobal.DEV_MODE && !envGlobal.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? [reduxLogger] : []),
             ),
         ),
     );
 
     // Store existing sagas untill store is ready
-    const existingSagas: StoreSagasMap = window.storeSagas;
+    const existingSagas: StoreSagasMap = envGlobal.storeSagas;
 
-    // Watch window.storeSagas for changes
+    // Watch envGlobal.storeSagas for changes
     watchWindowStoreSagas(sagaMiddleware.run);
 
     // Bind store to window
-    window.store = s;
+    envGlobal.store = s;
 
     // Load existing sagas
     Object.keys(existingSagas).forEach((k: keyof StoreSagasMap) => {
-        window.storeSagas[k] = existingSagas[k];
+        envGlobal.storeSagas[k] = existingSagas[k];
     });
 
     // Trigger saga init
-    window.store.dispatch({ type: '$$SAGA_INIT' });
+    envGlobal.store.dispatch({ type: '$$SAGA_INIT' });
 };
 
 declare global {
@@ -107,5 +108,19 @@ declare global {
 
         // Redux DevTools Chrome extension
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__<C>(a: C): C;
+    }
+
+    namespace NodeJS {
+        interface Process {
+            // Allows the use of Redux DevTools when true
+            DEV_MODE: boolean;
+
+            store: Store<StoreState, StoreActions>;
+            storeReducers: StoreReducersMap;
+            storeSagas: StoreSagasMap;
+
+            // Redux DevTools Chrome extension
+            __REDUX_DEVTOOLS_EXTENSION_COMPOSE__<C>(a: C): C;
+        }
     }
 }

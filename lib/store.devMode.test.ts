@@ -1,4 +1,6 @@
-window.DEV_MODE = true;
+import { envGlobal } from './envGlobal';
+
+envGlobal.DEV_MODE = true;
 
 const logs: any[][] = [];
 const mock: ((t: string) => ((...m: any[]) => void)) = (t: string): ((...m: any[]) => void) => (...m: any[]): void => {
