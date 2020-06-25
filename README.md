@@ -2,7 +2,7 @@
 
 [![Build Status - Travis CI](https://img.shields.io/travis/weavedev/store.svg)](https://travis-ci.org/weavedev/store)
 [![Test Coverage - Code Climate](https://img.shields.io/codeclimate/coverage/weavedev/store.svg)](https://codeclimate.com/github/weavedev/store/test_coverage)
-[![GPL-3.0](https://img.shields.io/github/license/weavedev/store.svg)](https://github.com/weavedev/store/blob/master/LICENSE)
+[![MIT](https://img.shields.io/github/license/weavedev/store.svg)](https://github.com/weavedev/store/blob/master/LICENSE)
 [![NPM](https://img.shields.io/npm/v/@weavedev/store.svg)](https://www.npmjs.com/package/@weavedev/store)
 
 Opinionated drop-in [Redux](http://redux.js.org/) store with [Redux-Saga](https://redux-saga.js.org)
@@ -211,6 +211,6 @@ init();
 
 ## License
 
-[GPL-3.0](https://github.com/weavedev/store/blob/master/LICENSE)
+[MIT](https://github.com/weavedev/store/blob/master/LICENSE)
 
 Made by [Paul Gerarts](https://github.com/gerarts) and [Weave](https://weave.nl)
