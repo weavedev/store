@@ -11,7 +11,7 @@
     "docs": "typedoc && touch docs/.nojekyll",
     "prepare": "npm-run-all -l test build docs",
     "test": "npm-run-all build test:*",
-    "test:jest": "npm-run-all build test:jest:*",
+    "test:jest": "npm-run-all test:jest:*",
     "test:jest:browser": "NODE_ENV=test jest",
     "test:jest:nodejs": "NODE_ENV=test jest --env=node",
     "test:lint": "tslint -p tsconfig.json -c tslint.json"

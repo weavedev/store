@@ -23,9 +23,7 @@ export function watchWindowStoreReducers(): StoreReducer {
 
             storeReducer = combineReducers(envGlobal.storeReducers);
 
-            if (envGlobal.store !== undefined) {
-                envGlobal.store.dispatch({ type: '$$REMOVE_REDUCER', reducer: `${String(k)}` });
-            }
+            envGlobal.store.dispatch({ type: '$$REMOVE_REDUCER', reducer: `${String(k)}` });
 
             return true;
         },
@@ -43,9 +41,7 @@ export function watchWindowStoreReducers(): StoreReducer {
 
             storeReducer = combineReducers(envGlobal.storeReducers);
 
-            if (envGlobal.store !== undefined) {
-                envGlobal.store.dispatch({ type: '$$SET_REDUCER', reducer: `${String(k)}` });
-            }
+            envGlobal.store.dispatch({ type: '$$SET_REDUCER', reducer: `${String(k)}` });
 
             return true;
         },
