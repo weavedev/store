@@ -11,15 +11,15 @@ export function watchWindowStoreReducers(): StoreReducer {
     let storeReducer: StoreReducer = combineReducers(envGlobal.storeReducers);
     // Wrap window reducers object and copy existing reducers
     envGlobal.storeReducers = new Proxy(envGlobal.storeReducers, {
-        deleteProperty(target: StoreReducersMap, k: keyof StoreReducersMap): boolean {
-            if (k === undefined || !target[k]) {
+        deleteProperty(target: StoreReducersMap, k: string | symbol): boolean {
+            if (k === undefined || !target[<keyof StoreReducersMap>k]) {
                 return true;
             }
 
-            delete target[k]; // tslint:disable-line:no-dynamic-delete
+            delete target[<keyof StoreReducersMap>k]; // tslint:disable-line:no-dynamic-delete
 
             // Clearing the state for the deleted reducer.
-            deletedReducers.push(k);
+            deletedReducers.push(<keyof StoreReducersMap>k);
 
             storeReducer = combineReducers(envGlobal.storeReducers);
 
@@ -27,17 +27,18 @@ export function watchWindowStoreReducers(): StoreReducer {
 
             return true;
         },
-        set<K extends keyof StoreReducersMap>(target: StoreReducersMap, k: K, value: StoreReducersMap[K]): boolean {
+        set(target: StoreReducersMap, k: string | symbol, value: any): boolean {
             if (k === undefined || k === '') {
                 return true;
             }
 
             // Clearing the state for the new reducer. (Preserving state should be done manually)
-            if (target[k]) {
-                deletedReducers.push(k);
+            if (target[<keyof StoreReducersMap>k]) {
+                deletedReducers.push(<keyof StoreReducersMap>k);
             }
 
-            target[k] = value;
+            // @ts-ignore
+            target[<keyof StoreReducersMap>k] = value; // tslint:disable-line:no-unsafe-any
 
             storeReducer = combineReducers(envGlobal.storeReducers);
 

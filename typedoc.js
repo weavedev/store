@@ -1,8 +1,10 @@
 module.exports = {
     readme: 'README.md',
     tsconfig: 'tsconfig.json',
-    mode: 'modules',
-    ignoreCompilerErrors: true,
+    entryPoints: [
+        "./lib/init.ts",
+        "./lib/store.ts",
+    ],
     exclude: [
         '**/node_modules/**',
         '**/test/**',

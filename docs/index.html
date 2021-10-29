@@ -1,349 +1,145 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@weavedev/store - v0.1.11</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">@weavedev/store - v0.1.11</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1> @weavedev/store - v0.1.11</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#store" id="store" style="color: inherit; text-decoration: none;">
-					<h1>store</h1>
-				</a>
-				<p><a href="https://travis-ci.org/weavedev/store"><img src="https://img.shields.io/travis/weavedev/store.svg" alt="Build Status - Travis CI"></a>
-					<a href="https://codeclimate.com/github/weavedev/store/test_coverage"><img src="https://img.shields.io/codeclimate/coverage/weavedev/store.svg" alt="Test Coverage - Code Climate"></a>
-					<a href="https://github.com/weavedev/store/blob/master/LICENSE"><img src="https://img.shields.io/github/license/weavedev/store.svg" alt="GPL-3.0"></a>
-				<a href="https://www.npmjs.com/package/@weavedev/store"><img src="https://img.shields.io/npm/v/@weavedev/store.svg" alt="NPM"></a></p>
-				<p>Opinionated drop-in <a href="http://redux.js.org/">Redux</a> store with <a href="https://redux-saga.js.org">Redux-Saga</a></p>
-				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
-					<h2>Install</h2>
-				</a>
-				<pre><code><span class="hljs-built_in">npm</span> i @weavedev/store</code></pre>
-				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
-					<h2>API documentation</h2>
-				</a>
-				<p>We generate API documentation with <a href="https://typedoc.org">TypeDoc</a>.</p>
-				<p><a href="https://weavedev.github.io/store/"><img src="https://img.shields.io/badge/API-Documentation-blue?style=for-the-badge&logo=typescript" alt="API Documentation"></a></p>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
-					<h3>Initialization</h3>
-				</a>
-				<a href="#basic-initialization" id="basic-initialization" style="color: inherit; text-decoration: none;">
-					<h4>Basic initialization</h4>
-				</a>
-				<p>The recommended way to create the <code>store</code> is with the <code>init()</code> function.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { init } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store/init'</span>;
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@weavedev/store</title><meta name="description" content="Documentation for @weavedev/store"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@weavedev/store</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> @weavedev/store</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#store" id="store" style="color: inherit; text-decoration: none;">
+  <h1>store</h1>
+</a>
+<p><a href="https://travis-ci.org/weavedev/store"><img src="https://img.shields.io/travis/weavedev/store.svg" alt="Build Status - Travis CI"></a>
+<a href="https://codeclimate.com/github/weavedev/store/test_coverage"><img src="https://img.shields.io/codeclimate/coverage/weavedev/store.svg" alt="Test Coverage - Code Climate"></a>
+<a href="https://github.com/weavedev/store/blob/master/LICENSE"><img src="https://img.shields.io/github/license/weavedev/store.svg" alt="MIT"></a>
+<a href="https://www.npmjs.com/package/@weavedev/store"><img src="https://img.shields.io/npm/v/@weavedev/store.svg" alt="NPM"></a></p>
+<p>Opinionated drop-in <a href="http://redux.js.org/">Redux</a> store with <a href="https://redux-saga.js.org">Redux-Saga</a></p>
 
-init();</code></pre>
-				<a href="#custom-initialization-with-middlewares" id="custom-initialization-with-middlewares" style="color: inherit; text-decoration: none;">
-					<h4>Custom initialization with middlewares</h4>
-				</a>
-				<p>If you want to use your own middlewares you can pass them as arguments.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { init } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store/init'</span>;
-<span class="hljs-keyword">import</span> { logger, router, uploader } <span class="hljs-keyword">from</span> <span class="hljs-string">'./middlewares'</span>;
+<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+  <h2>Install</h2>
+</a>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">i</span><span class="hl-1"> @</span><span class="hl-0">weavedev</span><span class="hl-1">/</span><span class="hl-0">store</span>
+</code></pre>
 
-init(logger, router, uploader);</code></pre>
-				<a href="#automatic-initialization" id="automatic-initialization" style="color: inherit; text-decoration: none;">
-					<h4>Automatic initialization</h4>
-				</a>
-				<p>When the <code>store</code> object is imported and <code>window.store</code> has not already been initialized this package will initialize it for you.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { store } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store'</span>;</code></pre>
-				<a href="#note" id="note" style="color: inherit; text-decoration: none;">
-					<h6>NOTE</h6>
-				</a>
-				<p>The purpose of automatic initialization and the importable <code>store</code> object are to provide an easy way to migrate an existing project. Manually initializing the store is recommended.</p>
-				<a href="#reducers" id="reducers" style="color: inherit; text-decoration: none;">
-					<h3>Reducers</h3>
-				</a>
-				<a href="#adding-reducers" id="adding-reducers" style="color: inherit; text-decoration: none;">
-					<h4>Adding reducers</h4>
-				</a>
-				<p>Adding reducers to the <code>window.storeReducers</code> object registers them on the <code>store</code> and allows you to dispatch actions on them.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Action, Reducer } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+  <h2>API documentation</h2>
+</a>
+<p>We generate API documentation with <a href="https://typedoc.org">TypeDoc</a>.</p>
+<p><a href="https://weavedev.github.io/store/"><img src="https://img.shields.io/badge/API-Documentation-blue?style=for-the-badge&logo=typescript" alt="API Documentation"></a></p>
 
-<span class="hljs-comment">// Clear message action</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CLEAR_MESSAGE = <span class="hljs-string">'CLEAR_MESSAGE'</span>;
-<span class="hljs-keyword">type</span> ClearMessage = Action&lt;<span class="hljs-keyword">typeof</span> CLEAR_MESSAGE&gt;;
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> clearMessage = (): <span class="hljs-function"><span class="hljs-params">ClearMessage</span> =&gt;</span> ({
-    <span class="hljs-keyword">type</span>: CLEAR_MESSAGE,
-});
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
 
-<span class="hljs-comment">// Set message action</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> SET_MESSAGE = <span class="hljs-string">'SET_MESSAGE'</span>;
-<span class="hljs-keyword">interface</span> SetMessage <span class="hljs-keyword">extends</span> Action&lt;typeof SET_MESSAGE&gt; {
-    message: <span class="hljs-built_in">string</span>;
-}
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> setMessage = (message: <span class="hljs-built_in">string</span>): <span class="hljs-function"><span class="hljs-params">SetMessage</span> =&gt;</span> ({
-    <span class="hljs-keyword">type</span>: SET_MESSAGE,
-    message,
-});
+<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
+  <h3>Initialization</h3>
+</a>
 
-<span class="hljs-comment">// Message reducer</span>
-<span class="hljs-built_in">window</span>.storeReducers.myMessageReducer = (state: <span class="hljs-built_in">string</span> = <span class="hljs-string">'default value'</span>, action: StoreActions): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> {
-    <span class="hljs-keyword">switch</span>(action.type) {
-        <span class="hljs-keyword">case</span> <span class="hljs-string">'CLEAR_MESSAGE'</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
-        <span class="hljs-keyword">case</span> <span class="hljs-string">'SET_MESSAGE'</span>:
-            <span class="hljs-keyword">return</span> action.message;
-        <span class="hljs-keyword">default</span>:
-            <span class="hljs-keyword">return</span> state;
-    }
-};
+<a href="#basic-initialization" id="basic-initialization" style="color: inherit; text-decoration: none;">
+  <h4>Basic initialization</h4>
+</a>
+<p>The recommended way to create the <code>store</code> is with the <code>init()</code> function.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">init</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@weavedev/store/init&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">init</span><span class="hl-1">();</span>
+</code></pre>
 
-<span class="hljs-keyword">declare</span> global {
-    <span class="hljs-keyword">interface</span> StoreReducersMap {
-        myMessageReducer: Reducer&lt;<span class="hljs-built_in">string</span>, StoreActions&gt;;
-    }
+<a href="#custom-initialization-with-middlewares" id="custom-initialization-with-middlewares" style="color: inherit; text-decoration: none;">
+  <h4>Custom initialization with middlewares</h4>
+</a>
+<p>If you want to use your own middlewares you can pass them as arguments.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">init</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@weavedev/store/init&#39;</span><span class="hl-1">;</span><br/><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">logger</span><span class="hl-1">, </span><span class="hl-0">router</span><span class="hl-1">, </span><span class="hl-0">uploader</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;./middlewares&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">init</span><span class="hl-1">(</span><span class="hl-0">logger</span><span class="hl-1">, </span><span class="hl-0">router</span><span class="hl-1">, </span><span class="hl-0">uploader</span><span class="hl-1">);</span>
+</code></pre>
 
-    <span class="hljs-keyword">interface</span> StoreActionsMap {
-        myMessageReducer: SetMessage | ClearMessage;
-    }
-}</code></pre>
-				<a href="#removing-reducers" id="removing-reducers" style="color: inherit; text-decoration: none;">
-					<h4>Removing reducers</h4>
-				</a>
-				<p>After removing a reducer from <code>window.storeReducers</code> it will no longer listen to dispatched actions. After a reducer is removed from <code>window.storeReducers</code> its state will be removed.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.storeReducers.myMessageReducer;</code></pre>
-				<a href="#sagas" id="sagas" style="color: inherit; text-decoration: none;">
-					<h3>Sagas</h3>
-				</a>
-				<a href="#adding-sagas" id="adding-sagas" style="color: inherit; text-decoration: none;">
-					<h4>Adding sagas</h4>
-				</a>
-				<p>Adding sagas to the <code>window.storeSagas</code> object registers them on the <code>store</code> and runs them to start listening to dispatched actions.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { call, takeLatest } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-saga/effects'</span>;
-<span class="hljs-keyword">import</span> { SetMessage } <span class="hljs-keyword">from</span> <span class="hljs-string">'./myMessageReducer'</span>;
+<a href="#automatic-initialization" id="automatic-initialization" style="color: inherit; text-decoration: none;">
+  <h4>Automatic initialization</h4>
+</a>
+<p>When the <code>store</code> object is imported and <code>window.store</code> has not already been initialized this package will initialize it for you.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">store</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@weavedev/store&#39;</span><span class="hl-1">;</span>
+</code></pre>
 
-<span class="hljs-comment">// Message saga</span>
-<span class="hljs-built_in">window</span>.storeSagas.myMessageSaga = <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>): <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">any</span>&gt; </span>{
-    <span class="hljs-keyword">yield</span> takeLatest(<span class="hljs-string">'SET_MESSAGE'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params">action: SetMessage</span>): <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">any</span>&gt; </span>{
-        <span class="hljs-keyword">yield</span> call(<span class="hljs-built_in">console</span>.log, action.message);
-    });
-};</code></pre>
-				<a href="#removing-sagas" id="removing-sagas" style="color: inherit; text-decoration: none;">
-					<h4>Removing sagas</h4>
-				</a>
-				<p>After removing a saga from <code>window.storeSagas</code> it will no longer listen to dispatched actions and if the saga is running it will be cancelled.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.storeSagas.myMessageSaga;</code></pre>
-				<a href="#global-types" id="global-types" style="color: inherit; text-decoration: none;">
-					<h3>Global types</h3>
-				</a>
-				<p>This package provides the following global types</p>
-				<a href="#storeactions" id="storeactions" style="color: inherit; text-decoration: none;">
-					<h4><code>StoreActions</code></h4>
-				</a>
-				<p>Any actions known to the store. Useful when creating reducers.</p>
-				<pre><code class="language-ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myReducer</span>(<span class="hljs-params">state: <span class="hljs-built_in">string</span>, action: StoreActions</span>): <span class="hljs-title">string</span> </span>{
-    <span class="hljs-comment">// ...</span>
-}</code></pre>
-				<a href="#storeactionsmap" id="storeactionsmap" style="color: inherit; text-decoration: none;">
-					<h4><code>StoreActionsMap</code></h4>
-				</a>
-				<p>Any actions you want to use with the store you can add to the <code>StoreActionsMap</code>. These actions will be available on the global <code>StoreActions</code> type.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">declare</span> global {
-    <span class="hljs-keyword">interface</span> StoreActionsMap {
-        myReducer: Action&lt;<span class="hljs-string">'MY_ACTION'</span>&gt;;
-    }
-}</code></pre>
-				<a href="#storereducersmap" id="storereducersmap" style="color: inherit; text-decoration: none;">
-					<h4><code>StoreReducersMap</code></h4>
-				</a>
-				<p>Any reducers you want to use with the store you can add to the <code>StoreReducersMap</code>. This wil also bind the types to <code>StoreState</code>.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">declare</span> global {
-    <span class="hljs-keyword">interface</span> StoreReducersMap {
-        myReducer: Reducer&lt;<span class="hljs-built_in">string</span>, StoreActions&gt;;
-    }
-}</code></pre>
-				<a href="#storesagasmap" id="storesagasmap" style="color: inherit; text-decoration: none;">
-					<h4><code>StoreSagasMap</code></h4>
-				</a>
-				<p>It exists. You will probably not need it. But just in case you are looking for it, here it is.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">declare</span> global {
-    <span class="hljs-keyword">interface</span> StoreSagasMap {
-        mySaga: Saga;
-    }
-}</code></pre>
-				<a href="#storestate" id="storestate" style="color: inherit; text-decoration: none;">
-					<h4><code>StoreState</code></h4>
-				</a>
-				<p>The <code>StoreState</code> type describes the return type of <code>window.store.getState()</code>. Useful when using stored values.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">const</span> state: StoreState = <span class="hljs-built_in">window</span>.store.getState();</code></pre>
-				<a href="#logging" id="logging" style="color: inherit; text-decoration: none;">
-					<h3>Logging</h3>
-				</a>
-				<p>Setting <code>window.DEV_MODE</code> to <code>true</code> before initializing will enable logging in the console and with the <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Chrome Redux DevTools</a>.</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { init } <span class="hljs-keyword">from</span> <span class="hljs-string">'@weavedev/store/init'</span>;
+<a href="#note" id="note" style="color: inherit; text-decoration: none;">
+  <h6>NOTE</h6>
+</a>
+<p>The purpose of automatic initialization and the importable <code>store</code> object are to provide an easy way to migrate an existing project. Manually initializing the store is recommended.</p>
 
-<span class="hljs-built_in">window</span>.DEV_MODE = <span class="hljs-literal">true</span>;
+<a href="#reducers" id="reducers" style="color: inherit; text-decoration: none;">
+  <h3>Reducers</h3>
+</a>
 
-init();</code></pre>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h2>License</h2>
-				</a>
-				<p><a href="https://github.com/weavedev/store/blob/master/LICENSE">GPL-3.0</a></p>
-				<p>Made by <a href="https://github.com/gerarts">Paul Gerarts</a> and <a href="https://weave.nl">Weave</a></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_defaultreducer_.html">&quot;default<wbr>Reducer&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_defaultsaga_.html">&quot;default<wbr>Saga&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_envglobal_.html">&quot;env<wbr>Global&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_init_.html">&quot;init&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_reducers_.html">&quot;reducers&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_sagas_.html">&quot;sagas&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_store_.html">&quot;store&quot;</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+<a href="#adding-reducers" id="adding-reducers" style="color: inherit; text-decoration: none;">
+  <h4>Adding reducers</h4>
+</a>
+<p>Adding reducers to the <code>window.storeReducers</code> object registers them on the <code>store</code> and allows you to dispatch actions on them.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">Action</span><span class="hl-1">, </span><span class="hl-0">Reducer</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;redux&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">// Clear message action</span><br/><span class="hl-2">export</span><span class="hl-1"> </span><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">CLEAR_MESSAGE</span><span class="hl-1"> = </span><span class="hl-3">&#39;CLEAR_MESSAGE&#39;</span><span class="hl-1">;</span><br/><span class="hl-6">type</span><span class="hl-1"> </span><span class="hl-8">ClearMessage</span><span class="hl-1"> = </span><span class="hl-8">Action</span><span class="hl-1">&lt;</span><span class="hl-6">typeof</span><span class="hl-1"> </span><span class="hl-7">CLEAR_MESSAGE</span><span class="hl-1">&gt;;</span><br/><span class="hl-2">export</span><span class="hl-1"> </span><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-4">clearMessage</span><span class="hl-1"> = (): </span><span class="hl-8">ClearMessage</span><span class="hl-1"> </span><span class="hl-6">=&gt;</span><span class="hl-1"> ({</span><br/><span class="hl-1">    </span><span class="hl-0">type:</span><span class="hl-1"> </span><span class="hl-7">CLEAR_MESSAGE</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-5">// Set message action</span><br/><span class="hl-2">export</span><span class="hl-1"> </span><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">SET_MESSAGE</span><span class="hl-1"> = </span><span class="hl-3">&#39;SET_MESSAGE&#39;</span><span class="hl-1">;</span><br/><span class="hl-6">interface</span><span class="hl-1"> </span><span class="hl-8">SetMessage</span><span class="hl-1"> </span><span class="hl-6">extends</span><span class="hl-1"> </span><span class="hl-8">Action</span><span class="hl-1">&lt;</span><span class="hl-6">typeof</span><span class="hl-1"> </span><span class="hl-7">SET_MESSAGE</span><span class="hl-1">&gt; {</span><br/><span class="hl-1">    </span><span class="hl-0">message</span><span class="hl-1">: </span><span class="hl-8">string</span><span class="hl-1">;</span><br/><span class="hl-1">}</span><br/><span class="hl-2">export</span><span class="hl-1"> </span><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-4">setMessage</span><span class="hl-1"> = (</span><span class="hl-0">message</span><span class="hl-1">: </span><span class="hl-8">string</span><span class="hl-1">): </span><span class="hl-8">SetMessage</span><span class="hl-1"> </span><span class="hl-6">=&gt;</span><span class="hl-1"> ({</span><br/><span class="hl-1">    </span><span class="hl-0">type:</span><span class="hl-1"> </span><span class="hl-7">SET_MESSAGE</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-0">message</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-5">// Message reducer</span><br/><span class="hl-0">window</span><span class="hl-1">.</span><span class="hl-0">storeReducers</span><span class="hl-1">.</span><span class="hl-4">myMessageReducer</span><span class="hl-1"> = (</span><span class="hl-0">state</span><span class="hl-1">: </span><span class="hl-8">string</span><span class="hl-1"> = </span><span class="hl-3">&#39;default value&#39;</span><span class="hl-1">, </span><span class="hl-0">action</span><span class="hl-1">: </span><span class="hl-8">StoreActions</span><span class="hl-1">): </span><span class="hl-8">string</span><span class="hl-1"> </span><span class="hl-6">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-2">switch</span><span class="hl-1">(</span><span class="hl-0">action</span><span class="hl-1">.</span><span class="hl-0">type</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-2">case</span><span class="hl-1"> </span><span class="hl-3">&#39;CLEAR_MESSAGE&#39;</span><span class="hl-1">:</span><br/><span class="hl-1">            </span><span class="hl-2">return</span><span class="hl-1"> </span><span class="hl-3">&#39;&#39;</span><span class="hl-1">;</span><br/><span class="hl-1">        </span><span class="hl-2">case</span><span class="hl-1"> </span><span class="hl-3">&#39;SET_MESSAGE&#39;</span><span class="hl-1">:</span><br/><span class="hl-1">            </span><span class="hl-2">return</span><span class="hl-1"> </span><span class="hl-0">action</span><span class="hl-1">.</span><span class="hl-0">message</span><span class="hl-1">;</span><br/><span class="hl-1">        </span><span class="hl-2">default</span><span class="hl-1">:</span><br/><span class="hl-1">            </span><span class="hl-2">return</span><span class="hl-1"> </span><span class="hl-0">state</span><span class="hl-1">;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">};</span><br/><br/><span class="hl-6">declare</span><span class="hl-1"> </span><span class="hl-0">global</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-6">interface</span><span class="hl-1"> </span><span class="hl-8">StoreReducersMap</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-0">myMessageReducer</span><span class="hl-1">: </span><span class="hl-8">Reducer</span><span class="hl-1">&lt;</span><span class="hl-8">string</span><span class="hl-1">, </span><span class="hl-8">StoreActions</span><span class="hl-1">&gt;;</span><br/><span class="hl-1">    }</span><br/><br/><span class="hl-1">    </span><span class="hl-6">interface</span><span class="hl-1"> </span><span class="hl-8">StoreActionsMap</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-0">myMessageReducer</span><span class="hl-1">: </span><span class="hl-8">SetMessage</span><span class="hl-1"> | </span><span class="hl-8">ClearMessage</span><span class="hl-1">;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#removing-reducers" id="removing-reducers" style="color: inherit; text-decoration: none;">
+  <h4>Removing reducers</h4>
+</a>
+<p>After removing a reducer from <code>window.storeReducers</code> it will no longer listen to dispatched actions. After a reducer is removed from <code>window.storeReducers</code> its state will be removed.</p>
+<pre><code class="language-ts"><span class="hl-6">delete</span><span class="hl-1"> </span><span class="hl-0">window</span><span class="hl-1">.</span><span class="hl-0">storeReducers</span><span class="hl-1">.</span><span class="hl-0">myMessageReducer</span><span class="hl-1">;</span>
+</code></pre>
+
+<a href="#sagas" id="sagas" style="color: inherit; text-decoration: none;">
+  <h3>Sagas</h3>
+</a>
+
+<a href="#adding-sagas" id="adding-sagas" style="color: inherit; text-decoration: none;">
+  <h4>Adding sagas</h4>
+</a>
+<p>Adding sagas to the <code>window.storeSagas</code> object registers them on the <code>store</code> and runs them to start listening to dispatched actions.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">call</span><span class="hl-1">, </span><span class="hl-0">takeLatest</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;redux-saga/effects&#39;</span><span class="hl-1">;</span><br/><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">SetMessage</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;./myMessageReducer&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">// Message saga</span><br/><span class="hl-0">window</span><span class="hl-1">.</span><span class="hl-0">storeSagas</span><span class="hl-1">.</span><span class="hl-4">myMessageSaga</span><span class="hl-1"> = </span><span class="hl-6">function*</span><span class="hl-1"> (): </span><span class="hl-8">Iterator</span><span class="hl-1">&lt;</span><span class="hl-8">any</span><span class="hl-1">&gt; {</span><br/><span class="hl-1">    </span><span class="hl-2">yield</span><span class="hl-1"> </span><span class="hl-4">takeLatest</span><span class="hl-1">(</span><span class="hl-3">&#39;SET_MESSAGE&#39;</span><span class="hl-1">, </span><span class="hl-6">function*</span><span class="hl-1"> (</span><span class="hl-0">action</span><span class="hl-1">: </span><span class="hl-8">SetMessage</span><span class="hl-1">): </span><span class="hl-8">Iterator</span><span class="hl-1">&lt;</span><span class="hl-8">any</span><span class="hl-1">&gt; {</span><br/><span class="hl-1">        </span><span class="hl-2">yield</span><span class="hl-1"> </span><span class="hl-4">call</span><span class="hl-1">(</span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">, </span><span class="hl-0">action</span><span class="hl-1">.</span><span class="hl-0">message</span><span class="hl-1">);</span><br/><span class="hl-1">    });</span><br/><span class="hl-1">};</span>
+</code></pre>
+
+<a href="#removing-sagas" id="removing-sagas" style="color: inherit; text-decoration: none;">
+  <h4>Removing sagas</h4>
+</a>
+<p>After removing a saga from <code>window.storeSagas</code> it will no longer listen to dispatched actions and if the saga is running it will be cancelled.</p>
+<pre><code class="language-ts"><span class="hl-6">delete</span><span class="hl-1"> </span><span class="hl-0">window</span><span class="hl-1">.</span><span class="hl-0">storeSagas</span><span class="hl-1">.</span><span class="hl-0">myMessageSaga</span><span class="hl-1">;</span>
+</code></pre>
+
+<a href="#global-types" id="global-types" style="color: inherit; text-decoration: none;">
+  <h3>Global types</h3>
+</a>
+<p>This package provides the following global types</p>
+
+<a href="#storeactions" id="storeactions" style="color: inherit; text-decoration: none;">
+  <h4><code>StoreActions</code></h4>
+</a>
+<p>Any actions known to the store. Useful when creating reducers.</p>
+<pre><code class="language-ts"><span class="hl-6">function</span><span class="hl-1"> </span><span class="hl-4">myReducer</span><span class="hl-1">(</span><span class="hl-0">state</span><span class="hl-1">: </span><span class="hl-8">string</span><span class="hl-1">, </span><span class="hl-0">action</span><span class="hl-1">: </span><span class="hl-8">StoreActions</span><span class="hl-1">): </span><span class="hl-8">string</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-5">// ...</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#storeactionsmap" id="storeactionsmap" style="color: inherit; text-decoration: none;">
+  <h4><code>StoreActionsMap</code></h4>
+</a>
+<p>Any actions you want to use with the store you can add to the <code>StoreActionsMap</code>. These actions will be available on the global <code>StoreActions</code> type.</p>
+<pre><code class="language-ts"><span class="hl-6">declare</span><span class="hl-1"> </span><span class="hl-0">global</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-6">interface</span><span class="hl-1"> </span><span class="hl-8">StoreActionsMap</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-0">myReducer</span><span class="hl-1">: </span><span class="hl-8">Action</span><span class="hl-1">&lt;</span><span class="hl-3">&#39;MY_ACTION&#39;</span><span class="hl-1">&gt;;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#storereducersmap" id="storereducersmap" style="color: inherit; text-decoration: none;">
+  <h4><code>StoreReducersMap</code></h4>
+</a>
+<p>Any reducers you want to use with the store you can add to the <code>StoreReducersMap</code>. This wil also bind the types to <code>StoreState</code>.</p>
+<pre><code class="language-ts"><span class="hl-6">declare</span><span class="hl-1"> </span><span class="hl-0">global</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-6">interface</span><span class="hl-1"> </span><span class="hl-8">StoreReducersMap</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-0">myReducer</span><span class="hl-1">: </span><span class="hl-8">Reducer</span><span class="hl-1">&lt;</span><span class="hl-8">string</span><span class="hl-1">, </span><span class="hl-8">StoreActions</span><span class="hl-1">&gt;;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#storesagasmap" id="storesagasmap" style="color: inherit; text-decoration: none;">
+  <h4><code>StoreSagasMap</code></h4>
+</a>
+<p>It exists. You will probably not need it. But just in case you are looking for it, here it is.</p>
+<pre><code class="language-ts"><span class="hl-6">declare</span><span class="hl-1"> </span><span class="hl-0">global</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-6">interface</span><span class="hl-1"> </span><span class="hl-8">StoreSagasMap</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-0">mySaga</span><span class="hl-1">: </span><span class="hl-8">Saga</span><span class="hl-1">;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#storestate" id="storestate" style="color: inherit; text-decoration: none;">
+  <h4><code>StoreState</code></h4>
+</a>
+<p>The <code>StoreState</code> type describes the return type of <code>window.store.getState()</code>. Useful when using stored values.</p>
+<pre><code class="language-ts"><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">state</span><span class="hl-1">: </span><span class="hl-8">StoreState</span><span class="hl-1"> = </span><span class="hl-0">window</span><span class="hl-1">.</span><span class="hl-0">store</span><span class="hl-1">.</span><span class="hl-4">getState</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#logging" id="logging" style="color: inherit; text-decoration: none;">
+  <h3>Logging</h3>
+</a>
+<p>Setting <code>window.DEV_MODE</code> to <code>true</code> before initializing will enable logging in the console and with the <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Chrome Redux DevTools</a>.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">init</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@weavedev/store/init&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">window</span><span class="hl-1">.</span><span class="hl-7">DEV_MODE</span><span class="hl-1"> = </span><span class="hl-6">true</span><span class="hl-1">;</span><br/><br/><span class="hl-4">init</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p><a href="https://github.com/weavedev/store/blob/master/LICENSE">MIT</a></p>
+<p>Made by <a href="https://github.com/gerarts">Paul Gerarts</a> and <a href="https://weave.nl">Weave</a></p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/init.html">init</a></li><li class=" tsd-kind-module"><a href="modules/store.html">store</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li><li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li><li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
