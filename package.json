@@ -1,6 +1,6 @@
 {
   "name": "@weavedev/store",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Opinionated drop-in redux store with redux-saga",
   "main": "dist/store.js",
   "types": "dist/store.d.ts",
